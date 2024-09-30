@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-function Input() {
-    const [amount, setAmount] = useState(1);
+function Input({Options}) {
+  const [amount, setAmount] = useState(1);
+  
   return (
     <>
       <div className="h-screen bg-[#9873FE] flex justify-center items-center ">
@@ -27,7 +28,13 @@ function Input() {
           </div>
           <div className="flex gap-2 ">
             <div className="from bg-purple-600 h-10  w-1/2 rounded mt-5 flex justify-center items-center text-white">
-              USD
+            <select className="text-white bg-transparent" value="other">
+            {Options.map((option) => (
+  <option key={option} value={option} className="text-black">{option}</option>
+))}
+
+            </select>
+
             </div>
             <button className="bg-purple-600 w-20 rounded mt-5 flex justify-center items-center text-white">
               <img src="swap.svg" />
