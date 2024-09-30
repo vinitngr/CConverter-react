@@ -9,7 +9,7 @@ function Input({
   onSCurrencyChange,
   SselectCurrency ,
   onconvertedAmount ,
-  convertedAmount
+  convertedAmount   ,
 }) {
     const [submittedAmount, setSubmittedAmount] = useState(amount); 
   const handleSubmit = (e) => {
@@ -64,7 +64,9 @@ function Input({
               <button
               onClick={
                 () => {
-                  onconvertedAmount(amount)
+                  const tempCurrency = selectCurrency;
+                  onCurrencyChange(SselectCurrency);
+                  onSCurrencyChange(tempCurrency);
                 }
               }
                 type="button"
@@ -93,7 +95,7 @@ function Input({
             </button>
           </form>
           <div className="convert bg-purple-300 h-12 mt-2 rounded flex justify-center items-center text-purple">
-            <div className="result font-bold">{submittedAmount} {selectCurrency} = {convertedAmount ? convertedAmount.toFixed(2) : 83.71} {SselectCurrency}</div>
+            <div className="result font-bold" id="result">{submittedAmount} {selectCurrency} = {convertedAmount ? convertedAmount.toFixed(2) : 83.71} {SselectCurrency}</div>
           </div>
         </div>
       </div>
@@ -110,7 +112,7 @@ Input.propTypes = {
     onSCurrencyChange: PropTypes.func.isRequired,
     SselectCurrency: PropTypes.string.isRequired,
     onconvertedAmount: PropTypes.func.isRequired,
-    convertedAmount: PropTypes.number
+    convertedAmount: PropTypes.number,
 }
 export default Input;
 

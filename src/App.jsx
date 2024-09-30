@@ -6,7 +6,7 @@ function App() {
   const [amount, setAmount] = useState(1);
   const [from, setFrom] = useState("usd");
   const [to, setTo] = useState("inr");
-  const [convertedAmount, seConvertedAmount] = useState(0);
+  const [convertedAmount, setConvertedAmount] = useState(0);
 
   const data = Fetch({ currency: from });
   const options = Object.keys(data);
@@ -21,7 +21,7 @@ function App() {
         SselectCurrency={to}
         onSCurrencyChange={(currency) => setTo(currency)}
         onCurrencyChange={(currency) => setFrom(currency)}
-        onconvertedAmount={()=> seConvertedAmount(amount * data[to])}
+        onconvertedAmount={()=> setConvertedAmount(amount * data[to])}
         convertedAmount = {convertedAmount}
       />
     </>
