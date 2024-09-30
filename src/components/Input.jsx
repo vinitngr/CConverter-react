@@ -95,7 +95,7 @@ function Input({
             </button>
           </form>
           <div className="convert bg-purple-300 h-12 mt-2 rounded flex justify-center items-center text-purple">
-            <div className="result font-bold" id="result">{submittedAmount} {selectCurrency} = {convertedAmount ? convertedAmount.toFixed(2) : 83.71} {SselectCurrency}</div>
+            <div className="result font-bold" id="result">{submittedAmount.toFixed(4)} {selectCurrency} = {convertedAmount ? convertedAmount.toFixed(4) : 83.71} {SselectCurrency}</div>
           </div>
         </div>
       </div>
