@@ -1,8 +1,25 @@
 import { useState } from "react";
+function Input({
+  amount,
+  currencyOptions,
+  selectCurrency,
+  onCurrencyChange,
+  onAmountChange,
+  onSCurrencyChange,
+  SselectCurrency ,
+  onconvertedAmount ,
+  convertedAmount
+}) {
+    const [submittedAmount, setSubmittedAmount] = useState(amount); 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(amount , selectCurrency , 'to' , SselectCurrency);
+    setSubmittedAmount(amount)
+    onconvertedAmount(amount)
+  };
 
-function Input({Options}) {
-  const [amount, setAmount] = useState(1);
-  
+
+
   return (
     <>
       <div className="h-screen bg-[#9873FE] flex justify-center items-center ">
@@ -10,44 +27,72 @@ function Input({Options}) {
           <div className="flex justify-center overflow-hidden h-[140px]">
             <img src="converter.png" className="h-40" />
           </div>
-          <div className="flex items-center  justify-center text-xl font-bold h-20">
+          <div className="flex items-center justify-center text-xl font-bold h-20">
             <h2 className="hand text-3xl">Currency converter</h2>
           </div>
-          <div>
-            <label className=" font-semibold text-md" htmlFor="amount">
-              Amount:
-            </label>
-            <input
-              id="amount"
-              type="number"
-              className="block outline-none w-full h-10 border-b-2 border-blue-950 p-1"
-              placeholder="100"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-          </div>
-          <div className="flex gap-2 ">
-            <div className="from bg-purple-600 h-10  w-1/2 rounded mt-5 flex justify-center items-center text-white">
-            <select className="text-white bg-transparent" value="other">
-            {Options.map((option) => (
-  <option key={option} value={option} className="text-black">{option}</option>
-))}
-
-            </select>
-
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label className="font-semibold text-md" htmlFor="amount">
+                Amount:
+              </label>
+              <input
+                id="amount"
+                type="number"
+                className="block outline-none w-full h-10 border-b-2 border-blue-950 p-1"
+                placeholder="100"
+                value={amount}
+                onChange={(e) =>
+                  onAmountChange && onAmountChange(Number(e.target.value))
+                }
+              />
             </div>
-            <button className="bg-purple-600 w-20 rounded mt-5 flex justify-center items-center text-white">
-              <img src="swap.svg" />
+            <div className="flex gap-2 ">
+              <div className="from bg-purple-600 h-10 w-1/2 rounded mt-5 flex justify-center items-center text-white">
+                <select
+                  className="text-white bg-transparent"
+                  value={selectCurrency}
+                  onChange={(e) => onCurrencyChange(e.target.value)}
+                >
+                  {currencyOptions.map((currency, index) => (
+                    <option key={index} value={currency} className="text-black">
+                      {currency}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button
+              onClick={
+                () => {
+                  onconvertedAmount(amount)
+                }
+              }
+                type="button"
+                className="bg-purple-600 w-20 rounded mt-5 flex justify-center items-center text-white">
+                    <img src="swap.svg" />
+              </button>
+              <div className="to bg-purple-600 h-10 w-1/2 rounded mt-5 flex justify-center items-center text-white">
+              <select
+                  className="text-white bg-transparent"
+                  value={SselectCurrency}
+                  onChange={(e) => onSCurrencyChange(e.target.value)}
+                >
+                  {currencyOptions.map((currency, index) => (
+                    <option key={index} value={currency} className="text-black">
+                      {currency}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="convert bg-purple-600 h-12 mt-5 w-full rounded flex justify-center items-center text-white"
+            >
+              Convert
             </button>
-            <div className="to    bg-purple-600 h-10 w-1/2 rounded mt-5 flex justify-center items-center text-white">
-              INR
-            </div>
-          </div>
-          <button className="convert bg-purple-600 h-12 mt-5 rounded flex justify-center items-center text-white">
-            Convert
-          </button>
+          </form>
           <div className="convert bg-purple-300 h-12 mt-2 rounded flex justify-center items-center text-purple">
-            <div className="result font-bold">1 USD = 90 RS</div>
+            <div className="result font-bold">{submittedAmount} {selectCurrency} = {convertedAmount ? convertedAmount.toFixed(2) : 83.71} {SselectCurrency}</div>
           </div>
         </div>
       </div>
