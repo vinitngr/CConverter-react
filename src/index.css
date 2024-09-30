@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Handlee&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
 .hand {
     font-family: "Handlee", cursive;
     font-weight: 400;
     font-style: normal;
-  }
-  
+}
