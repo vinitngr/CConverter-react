@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 function Input({
   amount,
   currencyOptions,
@@ -100,4 +101,16 @@ function Input({
   );
 }
 
+Input.propTypes = {
+    amount: PropTypes.number.isRequired,
+    currencyOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+    selectCurrency: PropTypes.string.isRequired,
+    onCurrencyChange: PropTypes.func.isRequired,
+    onAmountChange: PropTypes.func.isRequired,
+    onSCurrencyChange: PropTypes.func.isRequired,
+    SselectCurrency: PropTypes.string.isRequired,
+    onconvertedAmount: PropTypes.func.isRequired,
+    convertedAmount: PropTypes.number
+}
 export default Input;
+
