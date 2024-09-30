@@ -1,6 +1,7 @@
-
+import { useState } from "react";
 
 function Input() {
+    const [amount, setAmount] = useState(1);
   return (
     <>
       <div className="h-screen bg-[#9873FE] flex justify-center items-center ">
@@ -20,7 +21,8 @@ function Input() {
               type="number"
               className="block outline-none w-full h-10 border-b-2 border-blue-950 p-1"
               placeholder="100"
-              value={100}
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
             />
           </div>
           <div className="flex gap-2 ">
