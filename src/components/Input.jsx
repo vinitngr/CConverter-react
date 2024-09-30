@@ -12,10 +12,14 @@ function Input({
   convertedAmount   ,
 }) {
     const [submittedAmount, setSubmittedAmount] = useState(amount); 
+    const [subsetcur ,setsubsetcur] = useState(selectCurrency)
+    const [Ssubsetcur ,setSsubsetcur] = useState(SselectCurrency)
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(amount , selectCurrency , 'to' , SselectCurrency);
     setSubmittedAmount(amount)
+    setsubsetcur(selectCurrency)
+    setSsubsetcur(SselectCurrency)
     onconvertedAmount(amount)
   };
 
@@ -95,7 +99,7 @@ function Input({
             </button>
           </form>
           <div className="convert bg-purple-300 h-12 mt-2 rounded flex justify-center items-center text-purple">
-            <div className="result font-bold" id="result">{submittedAmount.toFixed(4)} {selectCurrency} = {convertedAmount ? convertedAmount.toFixed(4) : 83.71} {SselectCurrency}</div>
+            <div className="result font-bold" id="result">{submittedAmount.toFixed(4)} {subsetcur} = {convertedAmount ? convertedAmount.toFixed(4) : 83.71} {Ssubsetcur}</div>
           </div>
         </div>
       </div>
