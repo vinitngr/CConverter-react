@@ -7,23 +7,21 @@ function Input({
   onCurrencyChange,
   onAmountChange,
   onSCurrencyChange,
-  SselectCurrency ,
-  onconvertedAmount ,
-  convertedAmount   ,
+  SselectCurrency,
+  onconvertedAmount,
+  convertedAmount,
 }) {
-    const [submittedAmount, setSubmittedAmount] = useState(amount); 
-    const [subsetcur ,setsubsetcur] = useState(selectCurrency)
-    const [Ssubsetcur ,setSsubsetcur] = useState(SselectCurrency)
+  const [submittedAmount, setSubmittedAmount] = useState(amount);
+  const [subsetcur, setsubsetcur] = useState(selectCurrency);
+  const [Ssubsetcur, setSsubsetcur] = useState(SselectCurrency);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(amount , selectCurrency , 'to' , SselectCurrency);
-    setSubmittedAmount(amount)
-    setsubsetcur(selectCurrency)
-    setSsubsetcur(SselectCurrency)
-    onconvertedAmount(amount)
+    console.log(amount, selectCurrency, "to", SselectCurrency);
+    setSubmittedAmount(amount);
+    setsubsetcur(selectCurrency);
+    setSsubsetcur(SselectCurrency);
+    onconvertedAmount(amount);
   };
-
-
 
   return (
     <>
@@ -66,19 +64,18 @@ function Input({
                 </select>
               </div>
               <button
-              onClick={
-                () => {
+                onClick={() => {
                   const tempCurrency = selectCurrency;
                   onCurrencyChange(SselectCurrency);
                   onSCurrencyChange(tempCurrency);
-                }
-              }
+                }}
                 type="button"
-                className="bg-purple-600 w-20 rounded mt-5 flex justify-center items-center text-white">
-                    <img src="swap.svg" />
+                className="bg-purple-600 w-20 rounded mt-5 flex justify-center items-center text-white"
+              >
+                <img src="swap.svg" />
               </button>
               <div className="to bg-purple-600 h-10 w-1/2 rounded mt-5 flex justify-center items-center text-white">
-              <select
+                <select
                   className="text-white bg-transparent"
                   value={SselectCurrency}
                   onChange={(e) => onSCurrencyChange(e.target.value)}
@@ -99,7 +96,11 @@ function Input({
             </button>
           </form>
           <div className="convert bg-purple-300 h-12 mt-2 rounded flex justify-center items-center text-purple">
-            <div className="result font-bold" id="result">{submittedAmount.toFixed(4)} {subsetcur} = {convertedAmount ? convertedAmount.toFixed(4) : 83.71} {Ssubsetcur}</div>
+            <div className="result font-bold" id="result">
+              {submittedAmount.toFixed(4)} {subsetcur} ={" "}
+              {convertedAmount ? convertedAmount.toFixed(4) : 83.7068}{" "}
+              {Ssubsetcur}
+            </div>
           </div>
         </div>
       </div>
@@ -108,15 +109,14 @@ function Input({
 }
 
 Input.propTypes = {
-    amount: PropTypes.number.isRequired,
-    currencyOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
-    selectCurrency: PropTypes.string.isRequired,
-    onCurrencyChange: PropTypes.func.isRequired,
-    onAmountChange: PropTypes.func.isRequired,
-    onSCurrencyChange: PropTypes.func.isRequired,
-    SselectCurrency: PropTypes.string.isRequired,
-    onconvertedAmount: PropTypes.func.isRequired,
-    convertedAmount: PropTypes.number,
-}
+  amount: PropTypes.number.isRequired,
+  currencyOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectCurrency: PropTypes.string.isRequired,
+  onCurrencyChange: PropTypes.func.isRequired,
+  onAmountChange: PropTypes.func.isRequired,
+  onSCurrencyChange: PropTypes.func.isRequired,
+  SselectCurrency: PropTypes.string.isRequired,
+  onconvertedAmount: PropTypes.func.isRequired,
+  convertedAmount: PropTypes.number,
+};
 export default Input;
-
